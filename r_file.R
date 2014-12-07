@@ -1,16 +1,27 @@
-library('Quandl')
+csv = read.csv(file="dataset_2.csv")
 
+<<<<<<< HEAD
 auth_code <- read.table(file="GitHub/life_expectancy/auth_code.R")
 Quandl.auth(2oDc_ujzjRX8_QV_nfFJ)
+=======
+csv_sl = csv[csv$Country=="Sierra Leone",]
+csv_sl.lm = lm(Life.Expectancy~War+Health.Expenditure+I(Improved.Water.Sources*Improved.Sanitation)+Percentage.of.People.Undernourished, data=csv_sl)
+summary(csv_sl.lm)
+newdata = data.frame(War=0,Health.Expenditure=122.3210644,Percentage.of.People.Undernourished=39.9,Improved.Water.Sources=50.4,Improved.Sanitation=12.2)
+predict(csv_sl.lm,newdata)
+>>>>>>> FETCH_HEAD
 
-health_expenditure <- Quandl("WORLDBANK/SLE_SH_XPD_PCAP_PP_KD", trim_start="1975-12-31", trim_end="2012-12-31", authcode="ffT8ALix-1Z9XisyY5iB")
-names(health_expenditure)[2]<-"Health_Expenditure"
-plot(main = "Sierra Leone: Health expenditure per capita, PPP (constant 2005 international $)",x= health_expenditure$Date,y=health_expenditure$Health_Expenditure)
+csv_chad = csv[csv$Country=="Chad",]
+csv_chad.lm = lm(Life.Expectancy~War+Health.Expenditure+I(Improved.Water.Sources*Improved.Sanitation)+Percentage.of.People.Undernourished, data=csv_chad)
+summary(csv_chad.lm)
+newdata = data.frame(War=0,Health.Expenditure=58.53,Percentage.of.People.Undernourished=37.9,Improved.Water.Sources=46.7,Improved.Sanitation=10.4)
+predict(csv_chad.lm,newdata)
 
-community_health_workers_per_1000 <- Quandl("WORLDBANK/SLE_SH_MED_CMHW_P3", trim_start="1975-12-31", trim_end="2010-12-31", authcode="ffT8ALix-1Z9XisyY5iB")
-names(community_health_workers_per_1000)[2]<-"Community_Health_Workers_per_1000"
-plot(main = "Sierra Leone: Community health workers (per 1,000 people)",x= community_health_workers_per_1000$Date,y=community_health_workers_per_1000$Community_Health_Workers_per_1000)
+csv_senegal = csv[csv$Country=="Senegal",]
+csv_senegal.lm = lm(Life.Expectancy~War+Health.Expenditure+I(Improved.Water.Sources*Improved.Sanitation)+Percentage.of.People.Undernourished, data=csv_senegal)
+summary(csv_senegal.lm)
 
+<<<<<<< HEAD
 
 percent_undernourished <- Quandl("WORLDBANK/SLE_SN_ITK_DEFC_ZS", trim_start="1975-12-31", trim_end="2012-12-31")
 names(percent_undernourished)[2]<-"Percent_Undernourished"
@@ -32,3 +43,7 @@ Enrollment <- Quandl("UN/UIS_LOWERSECONDARYEDUCATIONENROLMENTINALLPROGRAMMES__AL
 names(number_of_students_enrolled)[2] <- "Students_Enrolled_Lower_Secondary"
 plot(main = "Sierra Leone:  Number of Students Enrolled, Lower Secondary", x=Enrollment$date, y=Enrollment$Enrollment)
 
+=======
+csv.lm = lm(Life.Expectancy~Country+War+Health.Expenditure+I(Improved.Water.Sources*Improved.Sanitation)+Percentage.of.People.Undernourished, data=csv)
+summary(csv.lm)
+>>>>>>> FETCH_HEAD
